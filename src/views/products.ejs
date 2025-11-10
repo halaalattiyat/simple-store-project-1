@@ -1,0 +1,26 @@
+<%- include('partials/header', { title: 'Products' }) %>
+
+<div class="d-flex justify-content-between align-items-center mb-3">
+  <h2 class="fw-bold">Products</h2>
+  <a href="/products" class="btn btn-sm btn-outline-secondary">Refresh</a>
+</div>
+
+<div class="row g-3">
+  <% products.forEach(p => { %>
+    <div class="col-sm-6 col-md-4 col-lg-3">
+      <div class="card h-100 shadow-sm">
+        <img src="<%= p.image %>" class="card-img-top" alt="<%= p.name %>" style="height:180px;object-fit:cover;">
+        <div class="card-body">
+          <h6 class="card-title"><%= p.name %></h6>
+          <p class="text-muted small mb-2"><%= p.category %></p>
+          <div class="d-flex justify-content-between align-items-center">
+            <div class="fw-semibold">$<%= p.price %></div>
+            <a class="btn btn-outline-primary btn-sm" href="/products/<%= p.id %>">Details</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% }) %>
+</div>
+
+<%- include('partials/footer') %>
